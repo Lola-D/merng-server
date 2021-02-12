@@ -3,8 +3,6 @@ const mongoose = require('mongoose')
 
 require('dotenv').config()
 
-const PORT = process.env.PORT || 5000
-
 const typeDefs = require('./typeDefs')
 const resolvers = require('./resolvers')
 
@@ -23,7 +21,7 @@ mongoose
   })
   .then(() => {
     console.log('MongoDB connected')
-    return server.listen({ port: PORT})
+    return server.listen(process.env.PORT || 3000)
   })
   .then((res) => {
     console.log(`Server running at ${res.url}`)
